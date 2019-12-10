@@ -1,0 +1,15 @@
+version: "3.2"
+services:
+  collectiveaccess:
+    build: ./collectiveaccess
+    container_name: collectiveaccess
+    environment:
+      - DB_USER=root
+      - DB_PW=root
+      - DB_NAME=db
+      - TZ=America/New_York
+    volumes:
+      - ./collectiveaccess/media:/var/www/providence/media
+    ports:
+      - 80:80
+    restart: always
