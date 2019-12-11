@@ -29,25 +29,25 @@
 # __CA_DB_HOST__ = Database server host name (often 'localhost')
 #
 if (!defined("__CA_DB_HOST__")) {
-	define("__CA_DB_HOST__", '172.17.0.2');
+	define("__CA_DB_HOST__", getenv("DB_HOST"));
 }
 
 # __CA_DB_USER__ = Database login user name
 #
 if (!defined("__CA_DB_USER__")) {
-	define("__CA_DB_USER__", 'root');
+	define("__CA_DB_USER__", getenv("DB_USER"));
 }
 
 # __CA_DB_PASSWORD__ = Database login password
 #
 if (!defined("__CA_DB_PASSWORD__")) {
-	define("__CA_DB_PASSWORD__", 'root');
+	define("__CA_DB_PASSWORD__", getenv("DB_PASSWORD"));
 }
 
 # __CA_DB_DATABASE__ = The name of your CollectiveAccess database
 #
 if (!defined("__CA_DB_DATABASE__")) {
-	define("__CA_DB_DATABASE__", 'c_access');
+	define("__CA_DB_DATABASE__", getenv("DB_NAME"));
 }
 
 # __CA_APP_DISPLAY_NAME__ = the name of your system, for display purposes
@@ -55,14 +55,14 @@ if (!defined("__CA_DB_DATABASE__")) {
 # This value will be used on emails, on the login screen, in window titles, etc.
 #
 if (!defined("__CA_APP_DISPLAY_NAME__")) {
-	define("__CA_APP_DISPLAY_NAME__", "OSCARI");
+	define("__CA_APP_DISPLAY_NAME__", getenv("APP_DISPLAY_NAME"));
 }
 
 
 # __CA_ADMIN_EMAIL__ = the email address from which to send administrative messages
 #
 if (!defined("__CA_ADMIN_EMAIL__")) {
-	define("__CA_ADMIN_EMAIL__", 'info@put-your-domain-here.com');
+	define("__CA_ADMIN_EMAIL__", getenv("ADMIN_EMAIL"));
 }
 
 
@@ -80,7 +80,7 @@ if (!defined("__CA_ADMIN_EMAIL__")) {
 # Set your preferred time zone here. The default is to use US Eastern Standard Time. 
 # A list of valid time zone settings is available at http://us3.php.net/manual/en/timezones.php
 #
-date_default_timezone_set('America/New_York');
+date_default_timezone_set(getenv("TIMEZONE"));
 
 
 # --------------------------------------------------------------------------------------------
@@ -113,7 +113,7 @@ if (!defined("__CA_QUEUE_ENABLED__")) {
 # The default value is US/English, which exists in most configurations.
 # 
 if (!defined("__CA_DEFAULT_LOCALE__")) {
-	define("__CA_DEFAULT_LOCALE__", "fi_FI");
+	define("__CA_DEFAULT_LOCALE__", "en_US");
 }
 
 

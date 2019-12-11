@@ -4,12 +4,16 @@ services:
     build: ./collectiveaccess
     container_name: collectiveaccess
     environment:
-      - DB_USER=root
-      - DB_PW=root
-      - DB_NAME=db
-      - TZ=America/New_York
+      - DB_HOST=${DB_HOST}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - APP_DISPLAY_NAME=${APP_DISPLAY_NAME}
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+      - TIMEZONE=${TIMEZONE}
     volumes:
       - ./collectiveaccess/media:/var/www/providence/media
     ports:
       - 80:80
     restart: always
+
