@@ -55,7 +55,6 @@ RUN ln -s /$CA_PROVIDENCE_DIR/media /$CA_PAWTUCKET_DIR/media
 
 
 COPY files/php.ini /etc/php/7.2/apache2/php.ini
-COPY files/setup.php /$CA_PROVIDENCE_DIR/setup.php
 COPY files/setup-providence.php /$CA_PROVIDENCE_DIR/setup.php
 COPY files/setup-pawtucket.php /$CA_PAWTUCKET_DIR/setup.php
 COPY files/entrypoint.sh /entrypoint.sh
