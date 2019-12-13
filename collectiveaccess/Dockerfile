@@ -47,7 +47,6 @@ RUN mv /var/www/providence-$CA_PROVIDENCE_VERSION /var/www/providence
 
 RUN curl -SsL https://github.com/collectiveaccess/pawtucket2/archive/$CA_PAWTUCKET_VERSION.tar.gz | tar -C /var/www/ -xzf -
 RUN mv $CA_PAWTUCKET_DIR/pawtucket2-$CA_PAWTUCKET_VERSION/* /var/www
-RUN cd $CA_PAWTUCKET_DIR && cp setup.php-dist setup.php
 
 RUN sed -i "s@DocumentRoot \/var\/www\/html@DocumentRoot \/var\/www@g" /etc/apache2/sites-available/000-default.conf
 RUN rm -rf /var/www/html
@@ -57,6 +56,8 @@ RUN ln -s /$CA_PROVIDENCE_DIR/media /$CA_PAWTUCKET_DIR/media
 
 COPY files/php.ini /etc/php/7.2/apache2/php.ini
 COPY files/setup.php /$CA_PROVIDENCE_DIR/setup.php
+COPY files/setup-providence.php /$CA_PROVIDENCE_DIR/setup.php
+COPY files/setup-pawtucket.php /$CA_PAWTUCKET_DIR/setup.php
 COPY files/entrypoint.sh /entrypoint.sh
 RUN chown -R www-data:www-data /var/www
 
