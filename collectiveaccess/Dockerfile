@@ -16,7 +16,7 @@ ENV CA_PAWTUCKET_DIR=/var/www
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y apache2 \
-					php7.0 \
+					php7.2 \
 					libapache2-mod-php \
 					curl \
 					php-mysql \
@@ -55,7 +55,7 @@ run mkdir /$CA_PROVIDENCE_DIR/media/collectiveaccess
 RUN ln -s /$CA_PROVIDENCE_DIR/media /$CA_PAWTUCKET_DIR/media
 
 
-COPY files/php.ini /etc/php/7.0/apache2/php.ini
+COPY files/php.ini /etc/php/7.2/apache2/php.ini
 COPY files/setup.php /$CA_PROVIDENCE_DIR/setup.php
 COPY files/entrypoint.sh /entrypoint.sh
 RUN chown -R www-data:www-data /var/www
