@@ -12,7 +12,7 @@ services:
       - ADMIN_EMAIL=${ADMIN_EMAIL}
       - TIMEZONE=${TIMEZONE}
     volumes:
-      - ./collectiveaccess/media:/var/www/providence/media
+      - ./collectiveaccess/www:/var/www
     ports:
       - 80:80
     restart: always

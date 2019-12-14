@@ -25,3 +25,15 @@ but using docker-compose for managing services.
    are set properly for the `/var/www/providence/media` directory by executing
    `chown -R www-data /var/www/providence/media` and `chgrp -R www-data
    /var/www/providence/media`.
+8. Follow instructions
+   [here](https://rogulski.it/blog/ftp-on-google-compute-enigne/) to set up FTP access. I had to delete the RANDFILE
+   line in /usr/lib/ssl/openssl.conf in order to generate a cert. Set the
+   local_root to the media directory in this repo, and add the ftpuser to the
+   www-data group. I also had to remove the comments from the ends of the config
+   file lines provided in this example.
+
+
+
+
+
+## Exporting Config / SQL
