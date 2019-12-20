@@ -60,6 +60,9 @@ COPY files/setup-pawtucket.php /$CA_PAWTUCKET_DIR/setup.php
 COPY files/entrypoint.sh /entrypoint.sh
 RUN chown -R www-data:www-data /var/www
 RUN chmod g+rwxs -R /var/www/app/tmp
+RUN chmod g+rwxs -R /var/www/providence/app/tmp
+RUN chmod g+rwxs -R /var/www/providence/import
+
 RUN chmod 777 /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
