@@ -39,7 +39,8 @@ RUN apt-get install -y php-pear php-dev graphicsmagick libgraphicsmagick1-dev ph
 # && pecl install gmagick-2.0.4RC1
 
 # better PDF (wkhtmltopdf)
-RUN wget https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb && apt install -y ./wkhtmltox_0.12.5-1.bionic_amd64.deb
+RUN wget
+https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb && apt install -y ./wkhtmltox_0.12.6-1.bionic_amd64.deb
 
 
 RUN curl -SsL https://github.com/collectiveaccess/providence/archive/$CA_PROVIDENCE_VERSION.tar.gz | tar -C /var/www/ -xzf -
@@ -56,6 +57,7 @@ RUN ln -s /$CA_PROVIDENCE_DIR/media /$CA_PAWTUCKET_DIR/media
 
 COPY files/php.ini /etc/php/7.2/apache2/php.ini
 COPY files/setup-providence.php /$CA_PROVIDENCE_DIR/setup.php
+COPY files/app.conf /$CA_PROVIDENCE_DIR/app/conf/app.conf
 COPY files/setup-pawtucket.php /$CA_PAWTUCKET_DIR/setup.php
 COPY files/entrypoint.sh /entrypoint.sh
 RUN chown -R www-data:www-data /var/www
