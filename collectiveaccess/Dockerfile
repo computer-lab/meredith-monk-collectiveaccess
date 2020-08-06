@@ -39,8 +39,7 @@ RUN apt-get install -y php-pear php-dev graphicsmagick libgraphicsmagick1-dev ph
 # && pecl install gmagick-2.0.4RC1
 
 # better PDF (wkhtmltopdf)
-RUN wget
-https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb && apt install -y ./wkhtmltox_0.12.6-1.bionic_amd64.deb
+RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb && apt install -y ./wkhtmltox_0.12.6-1.bionic_amd64.deb
 
 
 RUN curl -SsL https://github.com/collectiveaccess/providence/archive/$CA_PROVIDENCE_VERSION.tar.gz | tar -C /var/www/ -xzf -
