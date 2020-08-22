@@ -18,6 +18,7 @@ but using docker-compose for managing services.
    new database.
 5. SSH into the compute engine vm. Install docker and docker compose based on
    [these instructions](https://docs.mattermost.com/install/prod-docker.html).
+   Also execute `sudo systemctl enable docker` so that docker starts at boot.
 6. Clone this repo onto the compute engine vm, and copy the `.env` to the
    project root.
 7. Run the service with `docker-compose up -d`, then attach to the container
@@ -32,8 +33,10 @@ but using docker-compose for managing services.
    www-data group. I also had to remove the comments from the ends of the config
    file lines provided in this example.
 
-
-
-
-
 ## Exporting Config / SQL
+
+## Debug
+
+If an error is showing up, can ssh into the vm and remove/recreate the docker container:
+
+
