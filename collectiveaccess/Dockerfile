@@ -57,6 +57,7 @@ RUN ln -s /$CA_PROVIDENCE_DIR/media /$CA_PAWTUCKET_DIR/media
 COPY files/php.ini /etc/php/7.2/apache2/php.ini
 COPY files/setup-providence.php /$CA_PROVIDENCE_DIR/setup.php
 COPY files/app.conf /$CA_PROVIDENCE_DIR/app/conf/app.conf
+COPY files/multipart_id_numbering.conf /$CA_PROVIDENCE_DIR/app/conf/multipart_id_numbering.conf
 COPY files/setup-pawtucket.php /$CA_PAWTUCKET_DIR/setup.php
 COPY files/entrypoint.sh /entrypoint.sh
 RUN chown -R www-data:www-data /var/www
