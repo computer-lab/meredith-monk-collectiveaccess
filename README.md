@@ -39,4 +39,40 @@ but using docker-compose for managing services.
 
 If an error is showing up, can ssh into the vm and remove/recreate the docker container:
 
+```
+gcloud config set project meredith-monk-website
+gcloud beta compute --project "meredith-monk-website" ssh --zone "us-central1-a" "collectiveaccess"
+```
+
+## Adding more disk space
+
+1. Resize the disk in the [GCP console](https://console.cloud.google.com/compute/disksDetail/zones/us-central1-a/disks/collectiveaccess-standard?project=meredith-monk-website).
+
+2. SSH into the server (see above).
+
+3. View disk space available to confirm disk space exhausted:
+
+```
+du -Th
+sudo lsblk
+```
+
+3. Stop the service in this project directory:
+
+```
+docker-compose down
+```
+
+4. Grow the partition to use the disk space show with `lsblk`
+```
+sudo growpart /dev/sda 1
+```
+
+5. Grow the filesystem:
+```
+sudo resize2fs /dev/sda1
+```
+
+6. Confirm the filesystem now has the full space allotted in step 1.
+
 
