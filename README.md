@@ -48,12 +48,17 @@ gcloud beta compute --project "meredith-monk-website" ssh --zone "us-central1-a"
 
 1. Resize the disk in the [GCP console](https://console.cloud.google.com/compute/disksDetail/zones/us-central1-a/disks/collectiveaccess-standard?project=meredith-monk-website).
 
-2. SSH into the server (see above).
+2. SSH into the server (see above). Change to the `ptsd` user where the project is installed, and cd to that user's home directory:
+
+```
+sudo su ptsd
+cd /home/ptsd/meredith-monk-collectiveaccess
+```
 
 3. View disk space available to confirm disk space exhausted:
 
 ```
-du -Th
+df -Th
 sudo lsblk
 ```
 
@@ -73,6 +78,9 @@ sudo growpart /dev/sda 1
 sudo resize2fs /dev/sda1
 ```
 
-6. Confirm the filesystem now has the full space allotted in step 1.
+6. Confirm the filesystem now has the full space allotted in step 1, and restart the docker containers:
 
+```
+docker-compose up -d
+```
 
