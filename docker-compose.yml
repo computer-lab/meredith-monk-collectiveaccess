@@ -4,17 +4,35 @@ services:
     build: ./collectiveaccess
     container_name: collectiveaccess
     environment:
-      - DB_HOST=${DB_HOST}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=${DB_NAME}
-      - APP_DISPLAY_NAME=${APP_DISPLAY_NAME}
-      - ADMIN_EMAIL=${ADMIN_EMAIL}
-      - TIMEZONE=${TIMEZONE}
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      APP_DISPLAY_NAME: ${APP_DISPLAY_NAME}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      TIMEZONE: ${TIMEZONE}
     volumes:
       - ./collectiveaccess/media:/var/www/providence/media
       - ./collectiveaccess/import:/var/www/providence/import
     ports:
-      - 80:80
+      - 666:80
     restart: always
-
+    links:
+      - mysql
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - 3306:3306
+    volumes:
+      - my-db:/var/lib/mysql
+volumes:
+  my-db:
