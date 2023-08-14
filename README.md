@@ -5,14 +5,17 @@ Meredith Monk / House Foundation Collective Access setup.
 Based on [these Dockerfiles](https://github.com/artturimatias/CollectiveAccess),
 but using docker-compose for managing services.
 
-# to run locally
+## to run locally
 
 `brew services stop mysql` in case that is clashing with mysql container port
 once everything is running you should see
 ![Alt text](image.png)
 
-THen go to [the install url](http://localhost:666/providence/install/)
+Then go to [the install url](http://localhost:666/providence/install/)
 
+## Note
+
+on cloud, the files are in /home/ptsd
 
 ## Google Cloud Setup
 
