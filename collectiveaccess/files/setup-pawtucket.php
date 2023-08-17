@@ -99,7 +99,7 @@ date_default_timezone_set(getenv("TIMEZONE"));
 # available at http://docs.collectiveaccess.org
 #
 if (!defined("__CA_QUEUE_ENABLED__")) {
-	define("__CA_QUEUE_ENABLED__", 0);
+	define("__CA_QUEUE_ENABLED__", 1);
 }
 
 
