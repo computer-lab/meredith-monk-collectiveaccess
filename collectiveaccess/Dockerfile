@@ -34,6 +34,8 @@ RUN apt-get update && apt-get install -y apache2 \
 					php-zip \
 					vim
 
+COPY providence $CA_PROVIDENCE_DIR
+
 #GMAGICK
 RUN apt-get install -y php-pear php-dev graphicsmagick libgraphicsmagick1-dev php-gmagick
 # && pecl install gmagick-2.0.4RC1
@@ -41,9 +43,11 @@ RUN apt-get install -y php-pear php-dev graphicsmagick libgraphicsmagick1-dev ph
 # better PDF (wkhtmltopdf)
 RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_arm64.deb && apt install -y ./wkhtmltox_0.12.6-1.bionic_arm64.deb
 
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+RUN cd $CA_PROVIDENCE_DIR && composer install
 
-RUN curl -SsL https://github.com/collectiveaccess/providence/archive/$CA_PROVIDENCE_VERSION.tar.gz | tar -C /var/www/ -xzf -
-RUN mv /var/www/providence-$CA_PROVIDENCE_VERSION /var/www/providence
+# RUN curl -SsL https://github.com/collectiveaccess/providence/archive/$CA_PROVIDENCE_VERSION.tar.gz | tar -C /var/www/ -xzf -
+# RUN mv /var/www/providence-$CA_PROVIDENCE_VERSION /var/www/providence
 
 RUN curl -SsL https://github.com/collectiveaccess/pawtucket2/archive/$CA_PAWTUCKET_VERSION.tar.gz | tar -C /var/www/ -xzf -
 RUN mv $CA_PAWTUCKET_DIR/pawtucket2-$CA_PAWTUCKET_VERSION/* /var/www
