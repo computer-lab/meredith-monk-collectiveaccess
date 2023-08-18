@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -y apache2 \
 					curl \
 					php-curl \
 					php-xml \
+                    php-bcmath \ 
 					zip \
 					wget \
 					ffmpeg \
