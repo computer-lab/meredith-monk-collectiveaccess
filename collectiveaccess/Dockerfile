@@ -73,18 +73,17 @@ RUN cd $CA_PAWTUCKET_DIR && composer --ignore-platform-reqs install
 
 # RUN mv $CA_PAWTUCKET_DIR/pawtucket2-$CA_PAWTUCKET_VERSION/* /var/www
 
-RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
-USER docker
 
 RUN sed -i "s@DocumentRoot \/var\/www\/html@DocumentRoot \/var\/www@g" /etc/apache2/sites-available/000-default.conf
 RUN rm -rf /var/www/html
+
 run mkdir /$CA_PROVIDENCE_DIR/media/collectiveaccess
 RUN ln -s /$CA_PROVIDENCE_DIR/media /$CA_PAWTUCKET_DIR/media
 
 
 COPY files/php.ini /etc/php/7.4/apache2/php.ini
 COPY files/setup-providence.php /$CA_PROVIDENCE_DIR/setup.php
-COPY files/app.conf /$CA_PROVIDENCE_DIR/app/conf/app.conf
+COPY files/app.conf /$CA_PROVIDENCE_DIR/app/conf/local/app.conf
 COPY files/multipart_id_numbering.conf /$CA_PROVIDENCE_DIR/app/conf/multipart_id_numbering.conf
 COPY files/setup-pawtucket.php /$CA_PAWTUCKET_DIR/setup.php
 COPY files/entrypoint.sh /entrypoint.sh
@@ -95,6 +94,7 @@ RUN chmod g+rwxs -R /var/www/providence/import
 
 
 RUN chmod 777 /entrypoint.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
 
 CMD [ "/usr/sbin/apache2", "-DFOREGROUND" ]

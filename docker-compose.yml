@@ -15,7 +15,6 @@ services:
       - ./collectiveaccess/media:/var/www/providence/media
       - ./collectiveaccess/import:/var/www/providence/import
       - ./collectiveaccess/logs:/app/log
-      - ./collectiveaccess/apachelogs:/var/log/apache2
     ports:
       - 666:80
     restart: always
