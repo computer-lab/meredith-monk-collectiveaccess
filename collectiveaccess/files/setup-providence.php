@@ -204,7 +204,7 @@ if (!defined('__CA_CACHE_BACKEND__')) {
 # Note that in overwriting your database you will destroy *all* data in the database 
 # including any non-CollectiveAccess tables. Use this option at your own risk!
 if (!defined('__CA_ALLOW_INSTALLER_TO_OVERWRITE_EXISTING_INSTALLS__')) {
-	define('__CA_ALLOW_INSTALLER_TO_OVERWRITE_EXISTING_INSTALLS__', false);
+	define('__CA_ALLOW_INSTALLER_TO_OVERWRITE_EXISTING_INSTALLS__', true);
 }
 
 # __CA_STACKTRACE_ON_EXCEPTION__
@@ -215,7 +215,7 @@ if (!defined('__CA_ALLOW_INSTALLER_TO_OVERWRITE_EXISTING_INSTALLS__')) {
 # For production use you should set this to false. Note that exceptions are always
 # logged to the application log in app/log, regardless of what is set here.
 if (!defined('__CA_STACKTRACE_ON_EXCEPTION__')) {
-	define('__CA_STACKTRACE_ON_EXCEPTION__', false);
+	define('__CA_STACKTRACE_ON_EXCEPTION__', true);
 }
 
 require(__DIR__."/app/helpers/post-setup.php");

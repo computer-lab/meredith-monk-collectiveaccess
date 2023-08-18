@@ -23,10 +23,17 @@ RUN apt-get update && apt-get install -y apache2 \
 					curl \
 					php7.4-mysql \
 					mysql-client \
+                    redis-server \
 					curl \
 					php7.4-curl \
+                    php7.4-common \
+                    php7.4-gd \
+                    php7.4-mysqlnd \
 					php7.4-xml \
                     php7.4-bcmath \ 
+                    php7.4-fileinfo \
+                    php7.4-opcache \
+                    php7.4-mbstring \
 					zip \
 					wget \
 					ffmpeg \
@@ -38,7 +45,9 @@ RUN apt-get update && apt-get install -y apache2 \
 					vim
 
 RUN update-alternatives --set php /usr/bin/php7.4
+
 COPY providence $CA_PROVIDENCE_DIR
+COPY pawtucket2 $CA_PAWTUCKET_DIR
 
 #GMAGICK
 RUN apt-get install -y php-pear php-dev graphicsmagick libgraphicsmagick1-dev php-gmagick
@@ -50,12 +59,18 @@ RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkh
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 # ignore-platform-recs is a hacky workaround for bagittools requiring the intl ext which wasnt avilable in the ondrej repo
 RUN cd $CA_PROVIDENCE_DIR && composer --ignore-platform-reqs install
+RUN cd $CA_PAWTUCKET_DIR && composer --ignore-platform-reqs install
 
 # RUN curl -SsL https://github.com/collectiveaccess/providence/archive/$CA_PROVIDENCE_VERSION.tar.gz | tar -C /var/www/ -xzf -
 # RUN mv /var/www/providence-$CA_PROVIDENCE_VERSION /var/www/providence
 
-RUN curl -SsL https://github.com/collectiveaccess/pawtucket2/archive/$CA_PAWTUCKET_VERSION.tar.gz | tar -C /var/www/ -xzf -
-RUN mv $CA_PAWTUCKET_DIR/pawtucket2-$CA_PAWTUCKET_VERSION/* /var/www
+# RUN curl -SsL https://github.com/collectiveaccess/pawtucket2/archive/$CA_PAWTUCKET_VERSION.tar.gz | tar -C /var/www/ -xzf -
+# COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
+# ignore-platform-recs is a hacky workaround for bagittools requiring the intl ext which wasnt avilable in the ondrej repo
+
+
+# RUN mv $CA_PAWTUCKET_DIR/pawtucket2-$CA_PAWTUCKET_VERSION/* /var/www
 
 RUN sed -i "s@DocumentRoot \/var\/www\/html@DocumentRoot \/var\/www@g" /etc/apache2/sites-available/000-default.conf
 RUN rm -rf /var/www/html
