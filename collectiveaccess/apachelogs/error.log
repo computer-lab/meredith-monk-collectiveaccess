@@ -1,0 +1,13 @@
+PHP Warning:  Module 'gmagick' already loaded in Unknown on line 0
+[Fri Aug 18 13:53:58.948087 2023] [mpm_prefork:notice] [pid 131] AH00163: Apache/2.4.41 (Ubuntu) PHP/7.4.33 configured -- resuming normal operations
+[Fri Aug 18 13:53:58.949089 2023] [core:notice] [pid 131] AH00094: Command line: '/usr/sbin/apache2'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.30.0.3. Set the 'ServerName' directive globally to suppress this message
+PHP Warning:  Module 'gmagick' already loaded in Unknown on line 0
+[Fri Aug 18 14:06:38.873916 2023] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.41 (Ubuntu) PHP/7.4.33 configured -- resuming normal operations
+[Fri Aug 18 14:06:38.875058 2023] [core:notice] [pid 1] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
+[Fri Aug 18 14:07:50.036006 2023] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.30.0.3. Set the 'ServerName' directive globally to suppress this message
+PHP Warning:  Module 'gmagick' already loaded in Unknown on line 0
+[Fri Aug 18 14:08:23.718942 2023] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.41 (Ubuntu) PHP/7.4.33 configured -- resuming normal operations
+[Fri Aug 18 14:08:23.719586 2023] [core:notice] [pid 1] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
+[Fri Aug 18 14:09:06.470985 2023] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down

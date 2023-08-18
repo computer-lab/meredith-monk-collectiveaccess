@@ -45,12 +45,13 @@ RUN apt-get update && apt-get install -y apache2 \
 					vim
 
 RUN update-alternatives --set php /usr/bin/php7.4
+RUN a2dismod php8.2
 
 COPY providence $CA_PROVIDENCE_DIR
 COPY pawtucket2 $CA_PAWTUCKET_DIR
 
 #GMAGICK
-RUN apt-get install -y php-pear php-dev graphicsmagick libgraphicsmagick1-dev php-gmagick
+RUN apt-get install -y php7.4-dev graphicsmagick libgraphicsmagick1-dev php7.4-gmagick
 # && pecl install gmagick-2.0.4RC1
 
 # better PDF (wkhtmltopdf)
@@ -78,7 +79,7 @@ run mkdir /$CA_PROVIDENCE_DIR/media/collectiveaccess
 RUN ln -s /$CA_PROVIDENCE_DIR/media /$CA_PAWTUCKET_DIR/media
 
 
-COPY files/php.ini /etc/php/7.2/apache2/php.ini
+COPY files/php.ini /etc/php/7.4/apache2/php.ini
 COPY files/setup-providence.php /$CA_PROVIDENCE_DIR/setup.php
 COPY files/app.conf /$CA_PROVIDENCE_DIR/app/conf/app.conf
 COPY files/multipart_id_numbering.conf /$CA_PROVIDENCE_DIR/app/conf/multipart_id_numbering.conf
