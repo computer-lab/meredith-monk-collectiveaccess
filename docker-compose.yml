@@ -35,12 +35,12 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - my-db:/var/lib/mysql
+      - ./db:/var/lib/mysql
   # swag:
   #   image: lscr.io/linuxserver/swag
   #   container_name: swag
   #   cap_add:
-  #     - NET_ADMIN
+  #     - NET_ADMI
   #   environment:
   #     - PUID=1000
   #     - PGID=1000
@@ -54,6 +54,4 @@ services:
   #     - 443:443
   #     - 80:80 #optional
   #   restart: unless-stopped
-volumes:
-  my-db:
   # swag-config:

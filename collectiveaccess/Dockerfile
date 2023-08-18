@@ -73,6 +73,9 @@ RUN cd $CA_PAWTUCKET_DIR && composer --ignore-platform-reqs install
 
 # RUN mv $CA_PAWTUCKET_DIR/pawtucket2-$CA_PAWTUCKET_VERSION/* /var/www
 
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+USER docker
+
 RUN sed -i "s@DocumentRoot \/var\/www\/html@DocumentRoot \/var\/www@g" /etc/apache2/sites-available/000-default.conf
 RUN rm -rf /var/www/html
 run mkdir /$CA_PROVIDENCE_DIR/media/collectiveaccess
@@ -89,6 +92,7 @@ RUN chown -R www-data:www-data /var/www
 RUN chmod g+rwxs -R /var/www/app/tmp
 RUN chmod g+rwxs -R /var/www/providence/app/tmp
 RUN chmod g+rwxs -R /var/www/providence/import
+
 
 RUN chmod 777 /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
