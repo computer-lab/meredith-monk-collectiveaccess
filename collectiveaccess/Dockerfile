@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 ENV APACHE_RUN_USER     www-data
 ENV APACHE_RUN_GROUP    www-data
@@ -15,26 +15,29 @@ ENV CA_PAWTUCKET_DIR=/var/www
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+RUN apt-get update && apt-get install -y software-properties-common
+RUN add-apt-repository ppa:ondrej/php
 RUN apt-get update && apt-get install -y apache2 \
-					php7.2 \
+					php7.4 \
 					libapache2-mod-php \
 					curl \
-					php-mysql \
+					php7.4-mysql \
 					mysql-client \
 					curl \
-					php-curl \
-					php-xml \
-                    php-bcmath \ 
+					php7.4-curl \
+					php7.4-xml \
+                    php7.4-bcmath \ 
 					zip \
 					wget \
 					ffmpeg \
 					ghostscript \
 					imagemagick \
-					php-gd \
+					php7.4-gd \
 					libreoffice \
-					php-zip \
+					php7.4-zip \
 					vim
 
+RUN update-alternatives --set php /usr/bin/php7.4
 COPY providence $CA_PROVIDENCE_DIR
 
 #GMAGICK
@@ -45,7 +48,8 @@ RUN apt-get install -y php-pear php-dev graphicsmagick libgraphicsmagick1-dev ph
 RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_arm64.deb && apt install -y ./wkhtmltox_0.12.6-1.bionic_arm64.deb
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
-RUN cd $CA_PROVIDENCE_DIR && composer install
+# ignore-platform-recs is a hacky workaround for bagittools requiring the intl ext which wasnt avilable in the ondrej repo
+RUN cd $CA_PROVIDENCE_DIR && composer --ignore-platform-reqs install
 
 # RUN curl -SsL https://github.com/collectiveaccess/providence/archive/$CA_PROVIDENCE_VERSION.tar.gz | tar -C /var/www/ -xzf -
 # RUN mv /var/www/providence-$CA_PROVIDENCE_VERSION /var/www/providence
