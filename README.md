@@ -33,6 +33,13 @@ but using docker-compose for managing services.
    www-data group. I also had to remove the comments from the ends of the config
    file lines provided in this example.
 
+## Background Media Processing Queue
+We have the background media processing queue enabled so on the server, you will need to use crontab to configure a job to run every five minutes to process media e.g.:
+
+```
+*/1 * * * * /home/ptsd/meredith-monk-collectiveaccess/processQueue.sh 2>&1 | logger -t capq
+```
+
 ## Exporting Config / SQL
 
 ## Debug
