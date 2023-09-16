@@ -61,6 +61,7 @@ COPY files/app.conf /$CA_PROVIDENCE_DIR/app/conf/app.conf
 COPY files/browse.conf /$CA_PROVIDENCE_DIR/app/conf/browse.conf
 COPY files/media_processing.conf /$CA_PROVIDENCE_DIR/app/conf/media_processing.conf
 COPY files/multipart_id_numbering.conf /$CA_PROVIDENCE_DIR/app/conf/multipart_id_numbering.conf
+COPY files/services.conf /$CA_PROVIDENCE_DIR/app/conf/services.conf
 
 COPY files/setup-pawtucket.php /$CA_PAWTUCKET_DIR/setup.php
 COPY files/entrypoint.sh /entrypoint.sh
