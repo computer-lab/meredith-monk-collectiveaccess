@@ -1,0 +1,9 @@
+logrotate state -- version 2
+"/var/log/acpid.log" 2023-8-15-2:0:0
+"/config/log/nginx/access.log" 2023-9-17-2:0:0
+"/config/log/letsencrypt/*.log" 2023-8-15-2:0:0
+"/config/log/nginx/error.log" 2023-9-17-2:0:0
+"/var/log/php82/*.log" 2023-8-15-2:0:0
+"/config/log/letsencrypt/letsencrypt.log" 2023-9-17-2:0:0
+"/config/log/fail2ban/fail2ban.log" 2023-9-17-2:0:0
+"/config/log/php/error.log" 2023-9-17-2:0:0

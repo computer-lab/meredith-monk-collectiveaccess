@@ -55,10 +55,16 @@ RUN ln -s /$CA_PROVIDENCE_DIR/media /$CA_PAWTUCKET_DIR/media
 
 
 COPY files/php.ini /etc/php/7.2/apache2/php.ini
+
 COPY files/setup-providence.php /$CA_PROVIDENCE_DIR/setup.php
 COPY files/app.conf /$CA_PROVIDENCE_DIR/app/conf/app.conf
+COPY files/browse.conf /$CA_PROVIDENCE_DIR/app/conf/browse.conf
+COPY files/media_processing.conf /$CA_PROVIDENCE_DIR/app/conf/media_processing.conf
+COPY files/services.conf /$CA_PROVIDENCE_DIR/app/conf/services.conf
+
 COPY files/setup-pawtucket.php /$CA_PAWTUCKET_DIR/setup.php
 COPY files/entrypoint.sh /entrypoint.sh
+
 RUN chown -R www-data:www-data /var/www
 RUN chmod g+rwxs -R /var/www/app/tmp
 RUN chmod g+rwxs -R /var/www/providence/app/tmp
