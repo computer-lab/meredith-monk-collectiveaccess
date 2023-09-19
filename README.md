@@ -18,6 +18,7 @@ but using docker-compose for managing services.
    new database.
 5. SSH into the compute engine vm. Install docker and docker compose based on
    [these instructions](https://docs.mattermost.com/install/prod-docker.html).
+   Also execute `sudo systemctl enable docker` so that docker starts at boot.
 6. Clone this repo onto the compute engine vm, and copy the `.env` to the
    project root.
 7. Run the service with `docker-compose up -d`, then attach to the container
@@ -32,8 +33,61 @@ but using docker-compose for managing services.
    www-data group. I also had to remove the comments from the ends of the config
    file lines provided in this example.
 
+## Background Media Processing Queue
+We have the background media processing queue enabled so on the server, you will need to use crontab to configure a job to run every five minutes to process media e.g.:
 
-
-
+```
+*/1 * * * * /home/ptsd/meredith-monk-collectiveaccess/processQueue.sh 2>&1 | logger -t capq
+```
 
 ## Exporting Config / SQL
+
+## Debug
+
+If an error is showing up, can ssh into the vm and remove/recreate the docker container:
+
+```
+gcloud config set project meredith-monk-website
+gcloud beta compute --project "meredith-monk-website" ssh --zone "us-central1-a" "collectiveaccess"
+```
+
+## Adding more disk space
+
+1. Resize the disk in the [GCP console](https://console.cloud.google.com/compute/disksDetail/zones/us-central1-a/disks/collectiveaccess-standard?project=meredith-monk-website).
+
+2. SSH into the server (see above). Change to the `ptsd` user where the project is installed, and cd to that user's home directory:
+
+```
+sudo su ptsd
+cd /home/ptsd/meredith-monk-collectiveaccess
+```
+
+3. View disk space available to confirm disk space exhausted:
+
+```
+df -Th
+sudo lsblk
+```
+
+3. Stop the service in this project directory:
+
+```
+docker-compose down
+```
+
+4. Grow the partition to use the disk space show with `lsblk`
+```
+sudo growpart /dev/sda 1
+```
+
+5. Grow the filesystem:
+```
+sudo resize2fs /dev/sda1
+```
+
+6. Confirm the filesystem now has the full space allotted in step 1, and restart the docker containers:
+
+```
+docker-compose up -d
+```
+
