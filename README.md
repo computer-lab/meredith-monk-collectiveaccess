@@ -25,7 +25,7 @@ but using docker-compose for managing services.
    with `docker exec -it collectiveaccess /bin/bash`, and make sure permissions
    are set properly for the `/var/www/providence/media` directory by executing
    `chown -R www-data /var/www/providence/media` and `chgrp -R www-data
-   /var/www/providence/media`.
+   /var/www/providence/media` and `chmod g+rwxs -R /var/www/providence/media`.
 8. Follow instructions
    [here](https://rogulski.it/blog/ftp-on-google-compute-enigne/) to set up FTP access. I had to delete the RANDFILE
    line in /usr/lib/ssl/openssl.conf in order to generate a cert. Set the
