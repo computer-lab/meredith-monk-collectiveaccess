@@ -1,4 +1,3 @@
-version: "3.2"
 services:
   collectiveaccess:
     build: ./collectiveaccess
@@ -14,6 +13,7 @@ services:
     volumes:
       - ./collectiveaccess/media:/var/www/providence/media
       - ./collectiveaccess/import:/var/www/providence/import
+      # - ./web:/var/www/html
     ports:
       - 80:80
     restart: always
