@@ -14604,20 +14604,10 @@ class BaseModel extends BaseObject
 			$va_selects = array_merge($va_selects, $pa_options['fields']);
 		}
 
-		error_log('checkAccess: ' . print_r($pa_options['checkAccess'], true));
-		error_log('is_array: ' . (is_array($pa_options['checkAccess']) ? 'true' : 'false'));
-		error_log('sizeof: ' . sizeof($pa_options['checkAccess']));
-		error_log('hasField access: ' . ($t_rel_item->hasField('access') ? 'true' : 'false'));
-
 		if (isset($pa_options['checkAccess']) && is_array($pa_options['checkAccess']) && sizeof($pa_options['checkAccess']) && $t_rel_item->hasField('access')) {
 			$va_wheres[] = "({$vs_related_table}.access IN (" . join(',', $pa_options['checkAccess']) . "))";
-		} else {
-			error_log('Condition failed:');
-			if (!isset($pa_options['checkAccess'])) error_log('  - checkAccess is not set');
-			if (isset($pa_options['checkAccess']) && !is_array($pa_options['checkAccess'])) error_log('  - checkAccess is not an array');
-			if (isset($pa_options['checkAccess']) && is_array($pa_options['checkAccess']) && sizeof($pa_options['checkAccess']) === 0) error_log('  - checkAccess is empty');
-			if (!$t_rel_item->hasField('access')) error_log('  - t_rel_item does not have field access');
 		}
+
 		if (!empty($va_wheres)) {
 			error_log('va_wheres contents: ' . print_r($va_wheres, true));
 		} else {
