@@ -1,7 +1,7 @@
 <------------------------------------------------->
 
 <------------------------------------------------->
-cronjob running on Sun Sep 17 02:08:00 EDT 2023
+cronjob running on Sun Apr 27 02:08:00 EDT 2025
 Running certbot renew
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 
@@ -12,13 +12,13 @@ Certificate not yet due for renewal
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 The following certificates are not due for renewal yet:
-  /etc/letsencrypt/live/archive.meredithmonk.org/fullchain.pem expires on 2023-11-12 (skipped)
+  /etc/letsencrypt/live/archive.meredithmonk.org/fullchain.pem expires on 2025-07-18 (skipped)
 No renewals were attempted.
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 <------------------------------------------------->
 
 <------------------------------------------------->
-cronjob running on Mon Sep 18 02:08:00 EDT 2023
+cronjob running on Mon Apr 28 02:08:00 EDT 2025
 Running certbot renew
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 
@@ -29,13 +29,13 @@ Certificate not yet due for renewal
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 The following certificates are not due for renewal yet:
-  /etc/letsencrypt/live/archive.meredithmonk.org/fullchain.pem expires on 2023-11-12 (skipped)
+  /etc/letsencrypt/live/archive.meredithmonk.org/fullchain.pem expires on 2025-07-18 (skipped)
 No renewals were attempted.
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 <------------------------------------------------->
 
 <------------------------------------------------->
-cronjob running on Tue Sep 19 02:08:00 EDT 2023
+cronjob running on Tue Apr 29 02:08:00 EDT 2025
 Running certbot renew
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 
@@ -46,6 +46,57 @@ Certificate not yet due for renewal
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 The following certificates are not due for renewal yet:
-  /etc/letsencrypt/live/archive.meredithmonk.org/fullchain.pem expires on 2023-11-12 (skipped)
+  /etc/letsencrypt/live/archive.meredithmonk.org/fullchain.pem expires on 2025-07-18 (skipped)
+No renewals were attempted.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+<------------------------------------------------->
+
+<------------------------------------------------->
+cronjob running on Wed Apr 30 02:08:00 EDT 2025
+Running certbot renew
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Processing /etc/letsencrypt/renewal/archive.meredithmonk.org.conf
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Certificate not yet due for renewal
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+The following certificates are not due for renewal yet:
+  /etc/letsencrypt/live/archive.meredithmonk.org/fullchain.pem expires on 2025-07-18 (skipped)
+No renewals were attempted.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+<------------------------------------------------->
+
+<------------------------------------------------->
+cronjob running on Thu May  1 02:08:00 EDT 2025
+Running certbot renew
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Processing /etc/letsencrypt/renewal/archive.meredithmonk.org.conf
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Certificate not yet due for renewal
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+The following certificates are not due for renewal yet:
+  /etc/letsencrypt/live/archive.meredithmonk.org/fullchain.pem expires on 2025-07-18 (skipped)
+No renewals were attempted.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+<------------------------------------------------->
+
+<------------------------------------------------->
+cronjob running on Fri May  2 02:08:00 EDT 2025
+Running certbot renew
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Processing /etc/letsencrypt/renewal/archive.meredithmonk.org.conf
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Certificate not yet due for renewal
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+The following certificates are not due for renewal yet:
+  /etc/letsencrypt/live/archive.meredithmonk.org/fullchain.pem expires on 2025-07-18 (skipped)
 No renewals were attempted.
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
