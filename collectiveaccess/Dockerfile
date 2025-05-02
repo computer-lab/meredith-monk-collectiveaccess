@@ -5,6 +5,7 @@ ENV PROVIDENCE_DIR=/var/www/html
 RUN apt-get update && apt-get install -y \
     libzip-dev \
     unzip \
+    wget \
     git \
     zlib1g-dev \
     libicu-dev \
