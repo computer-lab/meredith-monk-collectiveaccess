@@ -46,7 +46,11 @@ function processTarget(\BaseModel $rec, string $table, array $t, ?array $options
 	$include_media = $t['includeMedia'] ?? false;
 	$media_versions = $t['mediaVersions'] ?? ["thumbnail", "small", "medium", "large", "original"];
 	$media_bundles = $t['mediaBundles'] ?? null;
-	$check_access = $t['checkAccess'] ?? null;
+
+	error_log("RAW CHECKACCESS ARG: " . print_r($options['checkAccess'], true));
+	$check_access = $options['checkAccess'] ?? null;
+	error_log('CHECKACCESS: ' . $check_access);
+
 
 	$target_pk = \Datamodel::primaryKey($t['table']);
 	$rels = $rec->getRelatedItems($t['table'], ['checkAccess' => $check_access, 'primaryIDs' => [$rec->tableName() => [$rec->getPrimaryKey()]], 'restrictToTypes' => $t['restrictToTypes'], 'restrictToRelationshipTypes' => $t['restrictToRelationshipTypes']]);
@@ -281,7 +285,9 @@ function processItemRelationships(string $table, array $identifer, ?array $optio
 	list($identifier, $opts) = \GraphQLServices\Helpers\resolveParams($args);
 	$rec_pk = $rec->primaryKey();
 
+	error_log("RAW CHECKACCESS ARG: " . print_r($args['checkAccess'], true));
 	$check_access = \GraphQLServices\Helpers\filterAccessValues($args['checkAccess']);
+	error_log("CHECKACCESS ARG: " . $check_access, true);
 
 	$targets = [];
 	if (is_array($args['targets'])) {
@@ -316,4 +322,3 @@ function processItemRelationships(string $table, array $identifer, ?array $optio
 		'relationships' => $rels_by_target[0]['relationships'] ?? null
 	];
 }
-

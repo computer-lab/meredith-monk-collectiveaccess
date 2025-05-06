@@ -46,10 +46,10 @@ RUN chown -R www-data:www-data $PROVIDENCE_DIR
 COPY files/php.ini /usr/local/etc/php/
 COPY files/setup.php $PROVIDENCE_DIR/setup.php
 COPY files/app.conf $PROVIDENCE_DIR/app/conf/app.conf
-#COPY files/browse.conf $PROVIDENCE_DIR/app/conf/browse.conf
-#COPY files/media_processing.conf $PROVIDENCE_DIR/app/conf/media_processing.conf
+COPY files/browse.conf $PROVIDENCE_DIR/app/conf/browse.conf
+COPY files/media_processing.conf $PROVIDENCE_DIR/app/conf/media_processing.conf
+COPY files/services.conf $PROVIDENCE_DIR/app/conf/services.conf
 #COPY files/multipart_id_numbering.conf $PROVIDENCE_DIR/app/conf/multipart_id_numbering.conf
-#COPY files/services.conf $PROVIDENCE_DIR/app/conf/services.conf
 
 
 WORKDIR $PROVIDENCE_DIR
