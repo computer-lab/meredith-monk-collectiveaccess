@@ -1,0 +1,2 @@
+2023-09-17 02:00:01,206 fail2ban.server         [377]: INFO    rollover performed on /config/log/fail2ban/fail2ban.log
+2023-09-18 12:09:37,105 fail2ban.filter         [377]: INFO    [nginx-botsearch] Found 185.180.143.18 - 2023-09-18 12:09:36

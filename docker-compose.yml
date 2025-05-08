@@ -15,6 +15,24 @@ services:
       - ./collectiveaccess/media:/var/www/providence/media
       - ./collectiveaccess/import:/var/www/providence/import
     ports:
-      - 80:80
+      - 666:80
     restart: always
-
+  swag:
+    image: lscr.io/linuxserver/swag
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+      - URL=archive.meredithmonk.org
+      - VALIDATION=http
+    volumes:
+      - ./swag-config:/config
+    ports:
+      - 443:443
+      - 80:80 #optional
+    restart: unless-stopped
+volumes:
+  swag-config:
